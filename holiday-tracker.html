@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>12–19 September — decision board</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --chart:#DCE6E8;
+  --chart-deep:#C3D4D8;
+  --ink:#16303A;
+  --ink-soft:#4A6672;
+  --paper:#F2F7F8;
+  --signal:#B4421F;
+  --sea:#1F6E6B;
+  --sand:#9A7B3F;
+  --rule:rgba(22,48,58,.16);
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;
+  background:var(--chart);
+  background-image:
+    repeating-radial-gradient(circle at 82% 8%, transparent 0 38px, rgba(22,48,58,.05) 38px 39px),
+    repeating-radial-gradient(circle at 12% 96%, transparent 0 46px, rgba(22,48,58,.04) 46px 47px);
+  color:var(--ink);
+  font-family:"Archivo",system-ui,-apple-system,sans-serif;
+  font-variation-settings:"wdth" 100;
+  font-size:16px;
+  line-height:1.5;
+}
+.wrap{max-width:760px;margin:0 auto;padding:24px 18px 72px}
+
+/* ---------- hero ---------- */
+.clock{
+  background:var(--ink);
+  color:var(--paper);
+  border-radius:3px;
+  padding:26px 22px 22px;
+  margin-bottom:28px;
+}
+.clock h1{
+  margin:0 0 18px;
+  font-size:15px;
+  font-weight:500;
+  font-variation-settings:"wdth" 88;
+  letter-spacing:.01em;
+  color:rgba(242,247,248,.62);
+}
+.countdown{display:flex;gap:30px;flex-wrap:wrap;align-items:baseline}
+.count-n{
+  font-size:clamp(52px,17vw,86px);
+  line-height:.82;
+  font-weight:700;
+  font-variation-settings:"wdth" 70;
+  display:block;
+}
+.count-l{
+  display:block;margin-top:9px;font-size:13px;
+  color:rgba(242,247,248,.66);max-width:19ch;line-height:1.35;
+}
+.count-n.urgent{color:#FF8B62}
+
+/* ---------- sections ---------- */
+h2{
+  font-size:13px;font-weight:600;font-variation-settings:"wdth" 84;
+  margin:34px 0 2px;color:var(--ink-soft);
+}
+.sub{margin:0 0 14px;font-size:13px;color:var(--ink-soft);max-width:62ch}
+
+/* ---------- option rows ---------- */
+.opt{
+  background:var(--paper);
+  border-left:4px solid var(--rule);
+  border-radius:0 3px 3px 0;
+  padding:13px 15px;
+  margin-bottom:7px;
+}
+.opt.lead{border-left-color:var(--sea)}
+.opt.expiring{border-left-color:var(--signal)}
+.opt.tui{border-left-color:var(--sand)}
+.opt-top{display:flex;justify-content:space-between;gap:14px;align-items:baseline}
+.opt-name{font-weight:600;font-size:15px;line-height:1.25}
+.opt-price{
+  font-weight:700;font-size:17px;white-space:nowrap;
+  font-variation-settings:"wdth" 78;
+}
+.opt-meta{margin-top:5px;font-size:13px;color:var(--ink-soft);line-height:1.45}
+.opt-flag{
+  display:inline-block;margin-top:7px;font-size:12px;font-weight:600;
+  padding:2px 7px;border-radius:2px;background:rgba(22,48,58,.07);
+}
+.opt-flag.warn{background:rgba(180,66,31,.13);color:var(--signal)}
+.opt-flag.good{background:rgba(31,110,107,.13);color:var(--sea)}
+
+/* ---------- benchmark ---------- */
+.bench{
+  border:1px solid var(--rule);border-radius:3px;
+  padding:15px;margin:26px 0 8px;background:rgba(242,247,248,.5);
+}
+.bench p{margin:0;font-size:14px;line-height:1.5}
+.bench strong{font-variation-settings:"wdth" 82}
+
+/* ---------- form ---------- */
+form{background:var(--paper);border-radius:3px;padding:17px 16px;margin-top:12px}
+label{display:block;font-size:13px;font-weight:600;margin:12px 0 4px}
+label:first-of-type{margin-top:0}
+input,select{
+  width:100%;padding:9px 10px;font:inherit;font-size:15px;
+  border:1px solid var(--chart-deep);border-radius:2px;
+  background:#fff;color:var(--ink);
+}
+input:focus,select:focus{outline:2px solid var(--sea);outline-offset:1px;border-color:transparent}
+.row2{display:flex;gap:10px}
+.row2>div{flex:1;min-width:0}
+button{
+  margin-top:16px;width:100%;padding:12px;font:inherit;font-size:15px;font-weight:600;
+  background:var(--ink);color:var(--paper);border:0;border-radius:2px;cursor:pointer;
+}
+button:hover{background:#0E222A}
+button:focus-visible{outline:2px solid var(--signal);outline-offset:2px}
+button.ghost{background:none;color:var(--ink-soft);font-weight:500;font-size:13px;padding:7px;margin-top:9px}
+button.ghost:hover{background:rgba(22,48,58,.06)}
+.verdict{margin-top:12px;font-size:14px;padding:11px 13px;border-radius:2px;line-height:1.45}
+.verdict.win{background:rgba(31,110,107,.13);color:#14514F}
+.verdict.lose{background:rgba(180,66,31,.11);color:#8C3418}
+.empty{font-size:13px;color:var(--ink-soft);padding:11px 0;margin:0}
+footer{margin-top:34px;font-size:12px;color:var(--ink-soft);line-height:1.5}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="clock">
+    <h1>Saturday 12 September → Saturday 19 September · two adults</h1>
+    <div class="countdown">
+      <div><span class="count-n" id="dDep">–</span><span class="count-l">days until you fly</span></div>
+      <div><span class="count-n" id="dCan">–</span><span class="count-l" id="canLabel">days to the next cancellation deadline</span></div>
+    </div>
+  </div>
+
+  <h2>Free to cancel — decide by these dates</h2>
+  <p class="sub">Everything here can still be walked away from. Deadlines passed are struck through.</p>
+  <div id="cancellable"></div>
+
+  <h2>Cheapest live prices</h2>
+  <p class="sub">Best rate found per property across Booking, lastminute, Trivago, DirectBooker and the operator screenshots. Flight estimates added where the price is hotel-only.</p>
+  <div id="options"></div>
+
+  <div class="bench">
+    <p><strong>Benchmark to beat: £2,145.</strong> La Isla y el Mar at £1,858 booked direct, plus about £287 of flights. Five-star adults-only, sea-view suite, breakfast, walkable in Puerto del Carmen, 9.4 from 4,778 reviews.</p>
+  </div>
+
+  <h2>Add an operator quote</h2>
+  <p class="sub">TUI, Jet2holidays, easyJet holidays, On the Beach and loveholidays have no connector, so I can't search them. Paste what you find and this works out whether it beats the benchmark.</p>
+
+  <form id="quoteForm">
+    <label for="qName">Hotel and operator</label>
+    <input id="qName" required placeholder="e.g. Sol Lanzarote — Jet2holidays">
+    <div class="row2">
+      <div>
+        <label for="qPrice">Total for two (£)</label>
+        <input id="qPrice" type="number" min="0" step="1" required inputmode="numeric" placeholder="1899">
+      </div>
+      <div>
+        <label for="qBoard">Board</label>
+        <select id="qBoard">
+          <option>Room only</option>
+          <option selected>Bed &amp; breakfast</option>
+          <option>Half board</option>
+          <option>All inclusive</option>
+        </select>
+      </div>
+    </div>
+    <div class="row2">
+      <div>
+        <label for="qFlights">Flights included?</label>
+        <select id="qFlights">
+          <option value="yes" selected>Yes — package</option>
+          <option value="no">No — hotel only</option>
+        </select>
+      </div>
+      <div>
+        <label for="qCancel">Free cancellation until</label>
+        <input id="qCancel" type="date">
+      </div>
+    </div>
+    <button type="submit">Add and compare</button>
+    <div id="verdict"></div>
+  </form>
+
+  <h2>Your quotes</h2>
+  <div id="saved"></div>
+  <button class="ghost" id="clearBtn" type="button">Clear saved quotes</button>
+
+  <footer>
+    Prices captured 1–2 September 2026 and not live — re-check before booking. Hotel-only figures exclude flights, car hire and food. Metasearch rates can be a different room type or board basis than quoted; verify on the click-through.
+  </footer>
+</div>
+
+<script>
+const DEPARTURE = "2026-09-12";
+const BENCHMARK = 2145;
+const FLIGHT_EST = { lanzarote: 287, sardinia: 421, rhodes: 0, cyprus: 0 };
+
+const CANCELLABLE = [
+  { name:"Cabú Hotel Adults Only — Rhodes", price:2086, by:"2026-09-04",
+    meta:"5★ adults-only, B&B, direct TUI flights included. Faliraki, 1.3km from the beach." },
+  { name:"La Isla y el Mar — Lanzarote", price:2222, by:"2026-09-08",
+    meta:"5★ adults-only sea-view suite, B&B, flights included. lastminute package rate." },
+  { name:"Radisson Blu Adults Only — Costa Teguise", price:2140, by:"2026-09-09",
+    meta:"Sea-view junior suite, half board, flights included. Costa Teguise, not Puerto del Carmen." },
+  { name:"Aqua Suites — Lanzarote", price:2010, by:"2026-09-09",
+    meta:"4★, 9.6 from 2,578 reviews. Family suite with terrace, B&B, flights included." }
+];
+
+const OPTIONS = [
+  { name:"Sardinia — Brancamaria + Il Platano", price:1529, cls:"lead",
+    meta:"3 nights Cala Gonone, 4 nights San Teodoro, flights £421. Add roughly £350 for car hire and fuel.",
+    flag:"Best value", flagCls:"good" },
+  { name:"TUI BLUE Budoni — Sardinia", price:1881, cls:"tui",
+    meta:"All inclusive, 4.5/5 from 1,368 reviews, direct Gatwick flights. £1,981 less the SAVE100 code.",
+    flag:"Food included", flagCls:"good" },
+  { name:"The Nines — Ayia Napa", price:1983, cls:"tui",
+    meta:"Brand-new 5★ adults-only, B&B, inland-view room. Only 9–11 reviews anywhere." },
+  { name:"La Isla y el Mar — Puerto del Carmen", price:2145, cls:"lead",
+    meta:"£1,858 direct plus £287 flights. 9.4 from 4,778 reviews, 0.4km from the centre.",
+    flag:"The benchmark", flagCls:"good" },
+  { name:"Hotel Las Costas — Lanzarote", price:1705, cls:"",
+    meta:"£1,418 via loveholidays plus flights. 4★, 9.2 from 7,526 reviews, but 1.9 miles out." },
+  { name:"Seaside Los Jameos — Lanzarote", price:1879, cls:"",
+    meta:"£1,592 plus flights. 9.1 from 11,826 reviews — the largest sample of anything found. 2.7 miles out." },
+  { name:"Amanti MadeForTwo — Ayia Napa", price:2506, cls:"",
+    meta:"5★ adults-only, 98 from 1,036 reviews, 0.7km from the centre. Flights included." },
+  { name:"Mangia's Santa Teresa — Sardinia", price:2899, cls:"tui",
+    meta:"B&B suite, flights included. £784 under its own room-only rate elsewhere, but 3.6km from town on hilly ground." },
+  { name:"Hotel Fariones — Puerto del Carmen", price:2945, cls:"",
+    meta:"£2,658 via TravelUp plus flights. 9.6 from 4,121 reviews. The nicest, and the dearest." }
+];
+
+const gbp = n => "£" + Math.round(n).toLocaleString("en-GB");
+const daysTo = d => Math.ceil((new Date(d + "T00:00:00") - new Date(new Date().toDateString())) / 86400000);
+
+function renderClock(){
+  const dep = daysTo(DEPARTURE);
+  const live = CANCELLABLE.filter(c => daysTo(c.by) >= 0).sort((a,b) => daysTo(a.by) - daysTo(b.by));
+  document.getElementById("dDep").textContent = dep >= 0 ? dep : "—";
+  const el = document.getElementById("dCan");
+  if(live.length){
+    const n = daysTo(live[0].by);
+    el.textContent = n;
+    el.classList.toggle("urgent", n <= 2);
+    document.getElementById("canLabel").textContent =
+      "days left on " + live[0].name.split(" — ")[0];
+  } else {
+    el.textContent = "0";
+    el.classList.add("urgent");
+    document.getElementById("canLabel").textContent = "every cancellable deadline has passed";
+  }
+}
+
+function renderCancellable(){
+  document.getElementById("cancellable").innerHTML = CANCELLABLE
+    .slice().sort((a,b) => daysTo(a.by) - daysTo(b.by))
+    .map(c => {
+      const n = daysTo(c.by);
+      const gone = n < 0;
+      const when = new Date(c.by + "T00:00:00")
+        .toLocaleDateString("en-GB",{day:"numeric",month:"long"});
+      const flag = gone
+        ? '<span class="opt-flag">Deadline passed</span>'
+        : `<span class="opt-flag ${n <= 2 ? "warn" : "good"}">Free until ${when}${n === 0 ? " — today" : ""}</span>`;
+      return `<div class="opt ${gone ? "" : (n <= 2 ? "expiring" : "lead")}"${gone ? ' style="opacity:.5"' : ""}>
+        <div class="opt-top">
+          <span class="opt-name"${gone ? ' style="text-decoration:line-through"' : ""}>${c.name}</span>
+          <span class="opt-price">${gbp(c.price)}</span>
+        </div>
+        <div class="opt-meta">${c.meta}</div>${flag}
+      </div>`;
+    }).join("");
+}
+
+function renderOptions(){
+  document.getElementById("options").innerHTML = OPTIONS
+    .slice().sort((a,b) => a.price - b.price)
+    .map(o => `<div class="opt ${o.cls}">
+      <div class="opt-top">
+        <span class="opt-name">${o.name}</span>
+        <span class="opt-price">${gbp(o.price)}</span>
+      </div>
+      <div class="opt-meta">${o.meta}</div>
+      ${o.flag ? `<span class="opt-flag ${o.flagCls||""}">${o.flag}</span>` : ""}
+    </div>`).join("");
+}
+
+/* ---------- saved quotes ---------- */
+const KEY = "sept-quotes";
+let quotes = [];
+
+async function loadQuotes(){
+  try{
+    const r = await window.storage.get(KEY);
+    quotes = r && r.value ? JSON.parse(r.value) : [];
+  }catch(e){ quotes = []; }
+  renderSaved();
+}
+
+async function saveQuotes(){
+  try{
+    await window.storage.set(KEY, JSON.stringify(quotes));
+  }catch(e){
+    document.getElementById("verdict").className = "verdict lose";
+    document.getElementById("verdict").textContent =
+      "Added below, but it couldn't be saved — it'll disappear if you reload.";
+  }
+}
+
+function effective(q){
+  return q.flights === "yes" ? q.price : q.price + FLIGHT_EST.lanzarote;
+}
+
+function renderSaved(){
+  const el = document.getElementById("saved");
+  if(!quotes.length){
+    el.innerHTML = '<p class="empty">Nothing added yet. Paste in the first operator price you find.</p>';
+    return;
+  }
+  el.innerHTML = quotes.slice().sort((a,b) => effective(a) - effective(b)).map((q,i) => {
+    const eff = effective(q);
+    const diff = BENCHMARK - eff;
+    const beats = diff > 0;
+    const cancelBit = q.cancel
+      ? " · free until " + new Date(q.cancel + "T00:00:00").toLocaleDateString("en-GB",{day:"numeric",month:"long"})
+      : "";
+    return `<div class="opt ${beats ? "lead" : ""}">
+      <div class="opt-top">
+        <span class="opt-name">${q.name}</span>
+        <span class="opt-price">${gbp(eff)}</span>
+      </div>
+      <div class="opt-meta">${q.board}${q.flights === "yes" ? " · flights included" : " · hotel only, £287 of flights added"}${cancelBit}</div>
+      <span class="opt-flag ${beats ? "good" : "warn"}">${beats ? "Beats the benchmark by " + gbp(diff) : gbp(-diff) + " above the benchmark"}</span>
+      <button class="ghost" data-del="${i}" type="button">Remove</button>
+    </div>`;
+  }).join("");
+  el.querySelectorAll("[data-del]").forEach(b => {
+    b.addEventListener("click", async () => {
+      const sorted = quotes.slice().sort((a,b) => effective(a) - effective(b));
+      const target = sorted[+b.dataset.del];
+      quotes = quotes.filter(q => q !== target);
+      await saveQuotes();
+      renderSaved();
+    });
+  });
+}
+
+document.getElementById("quoteForm").addEventListener("submit", async e => {
+  e.preventDefault();
+  const q = {
+    name: document.getElementById("qName").value.trim(),
+    price: +document.getElementById("qPrice").value,
+    board: document.getElementById("qBoard").value,
+    flights: document.getElementById("qFlights").value,
+    cancel: document.getElementById("qCancel").value
+  };
+  if(!q.name || !q.price) return;
+  quotes.push(q);
+  await saveQuotes();
+  renderSaved();
+
+  const eff = effective(q);
+  const diff = BENCHMARK - eff;
+  const v = document.getElementById("verdict");
+  v.className = "verdict " + (diff > 0 ? "win" : "lose");
+  v.textContent = diff > 0
+    ? `${gbp(eff)} all in — that beats the benchmark by ${gbp(diff)}. Worth taking.`
+    : `${gbp(eff)} all in — ${gbp(-diff)} more than La Isla y el Mar. Only worth it if the hotel is clearly better.`;
+  e.target.reset();
+  document.getElementById("qBoard").value = "Bed & breakfast";
+});
+
+document.getElementById("clearBtn").addEventListener("click", async () => {
+  quotes = [];
+  try{ await window.storage.delete(KEY); }catch(e){}
+  renderSaved();
+  document.getElementById("verdict").textContent = "";
+  document.getElementById("verdict").className = "";
+});
+
+renderClock();
+renderCancellable();
+renderOptions();
+loadQuotes();
+</script>
+</body>
+</html>
